@@ -120,16 +120,16 @@ extension NewsVC {
             
             guard let value = response.result.value else { return }
             
-                let json = JSON(value)
-                
-                    for item in json["results"].arrayValue {
+            let json = JSON(value)
+            
+            for item in json["results"].arrayValue {
                         
-                    guard !titleArray.contains(item["title"].stringValue) else { return } //чтобы при переключении экрана не дублировались новости
+                guard !titleArray.contains(item["title"].stringValue) else { return } //чтобы при переключении экрана не дублировались новости
 
-                    self.newsStoryUrlArray.append(item["url"].stringValue)
-                    self.titleArray.append(item["title"].stringValue)
-                    self.newsSourceArray.append(item["source"].stringValue)
-                    self.imageURLArray.append(item["media"][0]["media-metadata"][0]["url"].stringValue)
+                self.newsStoryUrlArray.append(item["url"].stringValue)
+                self.titleArray.append(item["title"].stringValue)
+                self.newsSourceArray.append(item["source"].stringValue)
+                self.imageURLArray.append(item["media"][0]["media-metadata"][0]["url"].stringValue)
 
 
 //                    if item["media"].arrayValue.isEmpty {
@@ -162,15 +162,9 @@ extension NewsVC {
                     
 //                    self.newsStoryUrlArray.append(item["url"].stringValue)
                 }
-            
-            
             complete(true)
         }
-        
-        
     }
-    
-    
 }
 
 
