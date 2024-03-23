@@ -109,58 +109,58 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
                 print("open link")
             }
         }
-        
-        
     }
-    
 }
 
 extension NewsVC {
     
     func getNewsData(complete: @escaping (_ status: Bool) -> ()) {
         
-        Alamofire.request("https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?api-key=0l1QWFx2rTrt0PjzcZYohV9TdqiPiQyz", method: .get).responseJSON { (response) in
+        Alamofire.request("https://api.nytimes.com/svc/mostpopular/v2/emailed/30.json?api-key=0l1QWFx2rTrt0PjzcZYohV9TdqiPiQyz", method: .get).responseJSON { [self] (response) in
             
             guard let value = response.result.value else { return }
             
                 let json = JSON(value)
                 
-                for item in json["results"].arrayValue {
-                    
-                
+                    for item in json["results"].arrayValue {
+                        
+                    guard !titleArray.contains(item["title"].stringValue) else { return } //чтобы при переключении экрана не дублировались новости
+
+                    self.newsStoryUrlArray.append(item["url"].stringValue)
                     self.titleArray.append(item["title"].stringValue)
                     self.newsSourceArray.append(item["source"].stringValue)
-                  //  self.imageURLArray.append(item["media"][0]["media-metadata"][0]["url"].stringValue)
+                    self.imageURLArray.append(item["media"][0]["media-metadata"][0]["url"].stringValue)
+
+
+//                    if item["media"].arrayValue.isEmpty {
+//                        
+//                        self.imageURLArray.append("")
+//                        
+//                    } else {
+//                        
+//                        var flag = false
+//                        
+//                        for mediaItem in item["media"].arrayValue {
+//                            
+//                            for mediaItemMeta in mediaItem["media-metadata"].arrayValue {
+//                                
+//                                if mediaItemMeta["format"] == "Standard Thumbnail" {
+//                                    
+//                                    self.imageURLArray.append(mediaItemMeta["url"].stringValue)
+//                                    
+//                                    flag = true
+//                                }
+//                                //   "format": "Standard Thumbnail"
+//                            }
+//                            if !flag {
+//                                self.imageURLArray.append("") //чтоб не нарушить индексацию по картинкам
+//                            }
+//                            
+//                        }
+//                        
+//                    }
                     
-                    if item["media"].arrayValue.isEmpty {
-                        
-                        self.imageURLArray.append("")
-                        
-                    } else {
-                        
-                        var flag = false
-                        
-                        for mediaItem in item["media"].arrayValue {
-                            
-                            for mediaItemMeta in mediaItem["media-metadata"].arrayValue {
-                                
-                                if mediaItemMeta["format"] == "Standard Thumbnail" {
-                                    
-                                    self.imageURLArray.append(mediaItemMeta["url"].stringValue)
-                                    
-                                    flag = true
-                                }
-                                //   "format": "Standard Thumbnail"
-                            }
-                            if !flag {
-                                self.imageURLArray.append("") //чтоб не нарушить индексацию по картинкам
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                    self.newsStoryUrlArray.append(item["url"].stringValue)
+//                    self.newsStoryUrlArray.append(item["url"].stringValue)
                 }
             
             
