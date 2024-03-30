@@ -1,6 +1,6 @@
 import UIKit
 
-class NewsCell: UITableViewCell {
+class NewsCellEmailed: UITableViewCell {
 
     
     @IBOutlet weak var newsImage: UIImageView!

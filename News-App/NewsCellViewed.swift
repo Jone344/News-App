@@ -1,24 +1,17 @@
-//
-//  NewsCellViewed.swift
-//  News-App
-//
-//  Created by user on 30.03.24.
-//  Copyright © 2024 Johnny Perdomo. All rights reserved.
-//
-
 import UIKit
 
 class NewsCellViewed: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var newsImage: UIImageView!
+    @IBOutlet weak var newsTitle: UILabel!
+    @IBOutlet weak var newsSource: UILabel!
+    
+    func configureCell( newsTitle: String, newsSource: String) {
+    //    self.newsImage.image = newsImage
+        self.newsTitle.text = newsTitle
+        self.newsSource.text = newsSource
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    
 }
+

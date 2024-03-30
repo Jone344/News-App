@@ -5,7 +5,7 @@ import SwiftyJSON
 import SDWebImage
 
 
-class NewsVC: UIViewController {
+class EmailedVC: UIViewController {
 
     
     @IBOutlet weak var newsTableView: UITableView!
@@ -46,7 +46,7 @@ class NewsVC: UIViewController {
     
 
 
-extension NewsVC: UITableViewDelegate, UITableViewDataSource {
+extension EmailedVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,7 +59,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath) as? NewsCell else { return UITableViewCell() }
+        guard let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsCellEmailed", for: indexPath) as? NewsCellEmailed else { return UITableViewCell() }
         
         var titles = String()
         var sources = String()
@@ -112,7 +112,7 @@ extension NewsVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension NewsVC {
+extension EmailedVC {
     
     func getNewsData(complete: @escaping (_ status: Bool) -> ()) {
         

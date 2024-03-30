@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AOv-B0-DEy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AOv-B0-DEy">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,35 +11,35 @@
         <!--Most emailed-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="NewsVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EmailedVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bch-Qf-99r">
-                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b4R-1w-3yo">
-                                    <rect key="frame" x="0.0" y="181.66666828502309" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="211" width="414" height="692"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="133" id="wRv-FV-BLy" customClass="NewsCell" customModule="News_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="133"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCellEmailed" rowHeight="133" id="wRv-FV-BLy" customClass="NewsCellEmailed" customModule="News_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRv-FV-BLy" id="Xwg-K4-Jyp">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKJ-zz-j1t">
-                                                    <rect key="frame" x="20.000000000000007" y="11" width="122.66666666666669" height="19"/>
+                                                    <rect key="frame" x="16.000000000000007" y="11" width="122.66666666666669" height="19"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                                     <color key="textColor" red="0.17235076707376487" green="0.54395875598689403" blue="0.98655849695205688" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1fa-9y-Ioc">
-                                                    <rect key="frame" x="244" y="11" width="150" height="111"/>
+                                                    <rect key="frame" x="248" y="11" width="150" height="111"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="6Xg-AS-Tis"/>
                                                     </constraints>
@@ -111,13 +111,13 @@
             </objects>
             <point key="canvasLocation" x="486" y="-2307"/>
         </scene>
-        <!--push-->
+        <!--most emailed-->
         <scene sceneID="LA4-Tf-7Kb">
             <objects>
                 <navigationController id="cSj-F7-qAI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="push" id="UjI-Le-m4i"/>
+                    <tabBarItem key="tabBarItem" title="most emailed" id="UjI-Le-m4i"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="1Yw-To-KH3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -128,13 +128,13 @@
             </objects>
             <point key="canvasLocation" x="48" y="-1511"/>
         </scene>
-        <!--push-->
+        <!--most shared-->
         <scene sceneID="kFs-Uj-CUo">
             <objects>
                 <navigationController id="AAp-CW-2U9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="push" id="zFX-ip-6nE"/>
+                    <tabBarItem key="tabBarItem" title="most shared" id="zFX-ip-6nE"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="NeC-HZ-0oF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -145,13 +145,13 @@
             </objects>
             <point key="canvasLocation" x="714" y="-1511"/>
         </scene>
-        <!--push-->
+        <!--most viewed-->
         <scene sceneID="o7h-GZ-qV0">
             <objects>
                 <navigationController id="RWb-mt-hrC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="push" id="jj2-xY-LdN"/>
+                    <tabBarItem key="tabBarItem" title="most viewed" id="jj2-xY-LdN"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="xrz-cZ-Fl1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -165,35 +165,35 @@
         <!--Most shared-->
         <scene sceneID="ycS-8G-SCX">
             <objects>
-                <viewController id="qob-Ca-NuO" customClass="NewsVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qob-Ca-NuO" customClass="SharedVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yOa-Wu-tTc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z9f-6a-BHb">
-                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9cT-wc-m95">
-                                    <rect key="frame" x="0.0" y="181.66666828502309" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="211" width="414" height="692"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="133" id="Xyh-gA-1f4" customClass="NewsCell" customModule="News_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="133"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCellShared" rowHeight="133" id="Xyh-gA-1f4" customClass="NewsCellShared" customModule="News_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xyh-gA-1f4" id="Vh5-50-hXX">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5DZ-D2-ccm">
-                                                    <rect key="frame" x="20.000000000000007" y="11" width="122.66666666666669" height="19"/>
+                                                    <rect key="frame" x="16.000000000000007" y="11" width="122.66666666666669" height="19"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                                     <color key="textColor" red="0.1723507671" green="0.54395875599999999" blue="0.98655849699999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tbu-wx-Mce">
-                                                    <rect key="frame" x="244" y="11" width="150" height="111"/>
+                                                    <rect key="frame" x="248" y="11" width="150" height="111"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="fv5-20-oxP"/>
                                                     </constraints>
@@ -249,35 +249,35 @@
         <!--Most viewed-->
         <scene sceneID="uJI-lQ-KMS">
             <objects>
-                <viewController id="YrN-Q3-vob" customClass="NewsVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YrN-Q3-vob" customClass="ViewedVC" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iWT-R6-5es">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-CQ-UAv">
-                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="133" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ARg-BY-RhX">
-                                    <rect key="frame" x="0.0" y="181.66666828502309" width="414" height="692"/>
+                                    <rect key="frame" x="0.0" y="211" width="414" height="692"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCell" rowHeight="133" id="hfT-I3-cg4" customClass="NewsCell" customModule="News_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="414" height="133"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsCellViewed" rowHeight="133" id="hfT-I3-cg4" customClass="NewsCellViewed" customModule="News_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="133"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hfT-I3-cg4" id="Eey-sx-HVI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="133"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Washington Post" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZd-aD-zUg">
-                                                    <rect key="frame" x="20.000000000000007" y="11" width="122.66666666666669" height="19"/>
+                                                    <rect key="frame" x="16.000000000000007" y="11" width="122.66666666666669" height="19"/>
                                                     <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
                                                     <color key="textColor" red="0.1723507671" green="0.54395875599999999" blue="0.98655849699999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-RQ-gaG">
-                                                    <rect key="frame" x="244" y="11" width="150" height="111"/>
+                                                    <rect key="frame" x="248" y="11" width="150" height="111"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="150" id="4Vc-NL-hlm"/>
                                                     </constraints>
