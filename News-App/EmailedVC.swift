@@ -10,6 +10,7 @@ class EmailedVC: UIViewController {
     
     let context = (UIApplication.shared.delegate as!AppDelegate).persistentContainer.viewContext
     lazy var newsData = NewsData(context: context)
+    var arrayOfNewsData = [NewsData]()
     
     var titleArray = [String]()
     var newsSourceArray = [String]()
@@ -40,17 +41,13 @@ class EmailedVC: UIViewController {
         }
     }
     
-    var alreadySavingNews = [String]()
 
     func save(link: String, image: String, title: String, source: String) {
         
 //     let context = (UIApplication.shared.delegate as!AppDelegate).persistentContainer.viewContext
 //     let newsData = NSEntityDescription.insertNewObject(forEntityName: "NewsData", into: context) as!NewsData
-
-        guard !alreadySavingNews.contains(link) else { return }
         
         newsData.link = link
-        alreadySavingNews.append(link)
         newsData.image = image
         newsData.title = title
         newsData.source = source
@@ -66,7 +63,6 @@ class EmailedVC: UIViewController {
    
 
 extension EmailedVC: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
        return 1
     }
@@ -76,13 +72,15 @@ extension EmailedVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         guard let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsCellEmailed", for: indexPath) as? NewsCellEmailed else { return UITableViewCell() }
+        
         
         cell.newsImage.sd_setImage(with: URL(string: imageURLArray[indexPath.row]))
         cell.newsImage.layer.cornerRadius = 10
         cell.newsSource.text = newsSourceArray[indexPath.row]
         cell.newsTitle.text = titleArray[indexPath.row]
+        
+        
         
         return cell
     }
@@ -90,10 +88,13 @@ extension EmailedVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
                 
         let urls = newsStoryUrlArray[(indexPath.row)]
-        UIApplication.shared.open(URL(string: urls)!)
+        UIApplication.shared.open(URL(string: urls)!) 
         
+        if arrayOfNewsData.count != 0 {
+            guard ((arrayOfNewsData[indexPath.row].link?.contains(urls)) == nil) else { return }
+        }
+
         self.save(link: urls, image: self.imageURLArray[indexPath.row], title: self.titleArray[indexPath.row], source: self.newsSourceArray[indexPath.row])
-         
     }
 }
 
