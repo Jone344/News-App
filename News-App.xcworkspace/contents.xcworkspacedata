@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:NewsData+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:NewsData+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:News-App.xcodeproj">
    </FileRef>
    <FileRef

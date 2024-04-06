@@ -9,6 +9,7 @@ class ViewedVC: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
     
+    
     var titleArray = [String]()
     var newsSourceArray = [String]()
     var imageURLArray = [String]()
