@@ -9,6 +9,9 @@ class SharedVC: UIViewController {
     
     @IBOutlet weak var newsTableView: UITableView!
     
+    let context = (UIApplication.shared.delegate as!AppDelegate).persistentContainer.viewContext
+    var favorites = FavoritesVC() // for debaging. Check how many stories(data) in CoreData
+    
     var titleArray = [String]()
     var newsSourceArray = [String]()
     var imageURLArray = [String]()
@@ -37,77 +40,61 @@ class SharedVC: UIViewController {
                 print("doesnt work ")
             }
         }
-        
     }
         
-}
+    func save(link: String, image: String, title: String, source: String) {
+        
+//     let context = (UIApplication.shared.delegate as!AppDelegate).persistentContainer.viewContext
+//     let newsData = NSEntityDescription.insertNewObject(forEntityName: "NewsData", into: context) as!NewsData
+        
+        var newsData = NewsData(context: context) // если сохранить в шапке файла, новость не будет сохранятся в CoreData
 
-    
+        newsData.link = link
+        newsData.image = image
+        newsData.title = title
+        newsData.source = source
+                
+        do {
+            try context.save()
+            print("successfully saved")
+        } catch {
+            print("Could not save")
+        }
+    }
+}
 
 
 extension SharedVC: UITableViewDelegate, UITableViewDataSource {
-    
-    
+        
     func numberOfSections(in tableView: UITableView) -> Int {
        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
        return imageURLArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsCellShared", for: indexPath) as? NewsCellShared else { return UITableViewCell() }
         
-        var titles = String()
-        var sources = String()
-        
-        if titleArray.count > 0 {
-             titles = titleArray[indexPath.row ]
-        } else {
-             titles = ""
-        }
-        
-        if newsSourceArray.count > 0 {
-            sources = newsSourceArray[indexPath.row]
-        } else {
-            sources = ""
-        }
-    
-        if imageURLArray.count > 0 {
-            
-            cell.newsImage.sd_setImage(with: URL(string: imageURLArray[indexPath.row])) { (image, error, cache, urls) in
-                if (error != nil) {
-                    cell.newsImage.image = UIImage(named: "newsPlaceholder")
-                } else {
-                    cell.newsImage.image = image
-                }
-            }
-            
-        } else {
-            cell.newsImage.image = UIImage(named: "newsPlaceholder")!
-        }
-        
-        
+        cell.newsImage.sd_setImage(with: URL(string: imageURLArray[indexPath.row]))
         cell.newsImage.layer.cornerRadius = 10
-        
-        cell.configureCell(newsTitle: titles, newsSource: sources)
+        cell.newsSource.text = newsSourceArray[indexPath.row]
+        cell.newsTitle.text = titleArray[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let indexPath = tableView.indexPathForSelectedRow
-        
-        let urls = newsStoryUrlArray[(indexPath?.row)!]
+                
+        let urls = newsStoryUrlArray[indexPath.row]
     
-        UIApplication.shared.open( URL(string: urls)!, options: [:] ) { (success) in
+        UIApplication.shared.open(URL(string: urls)!) { (success) in
             if success {
                 print("open link")
             }
         }
+        self.save(link: urls, image: self.imageURLArray[indexPath.row], title: self.titleArray[indexPath.row], source: self.newsSourceArray[indexPath.row])
     }
 }
 
@@ -130,50 +117,9 @@ extension SharedVC {
                 self.newsSourceArray.append(item["source"].stringValue)
                 self.imageURLArray.append(item["media"][0]["media-metadata"][0]["url"].stringValue)
 
-
-//                    if item["media"].arrayValue.isEmpty {
-//
-//                        self.imageURLArray.append("")
-//
-//                    } else {
-//
-//                        var flag = false
-//
-//                        for mediaItem in item["media"].arrayValue {
-//
-//                            for mediaItemMeta in mediaItem["media-metadata"].arrayValue {
-//
-//                                if mediaItemMeta["format"] == "Standard Thumbnail" {
-//
-//                                    self.imageURLArray.append(mediaItemMeta["url"].stringValue)
-//
-//                                    flag = true
-//                                }
-//                                //   "format": "Standard Thumbnail"
-//                            }
-//                            if !flag {
-//                                self.imageURLArray.append("") //чтоб не нарушить индексацию по картинкам
-//                            }
-//
-//                        }
-//
-//                    }
-                    
-//                    self.newsStoryUrlArray.append(item["url"].stringValue)
-                }
+            }
             complete(true)
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
