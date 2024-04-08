@@ -15,16 +15,23 @@ class FavoritesVC: UIViewController {
         super.viewDidLoad()
         newsTableView.delegate = self
         newsTableView.dataSource = self
-        //newsData = fetch()
         
         self.newsTableView.reloadData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        newsData = fetch()
+//        newsTableView.reloadData()
+//    }
+//    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         newsData = fetch()
         newsTableView.reloadData()
     }
+
+
     
     func fetch() -> [NewsData] {
         var newsData = [NewsData]()
@@ -35,6 +42,18 @@ class FavoritesVC: UIViewController {
             print("couldnt fetch")
         }
         return newsData
+    }
+    
+    func delete(item: NewsData) {
+        context.delete(item)
+        
+        do {
+            try context.save()
+            print("successfully deleted")
+            newsTableView.reloadData()
+        } catch {
+            print("Could not deleted")
+        }
     }
 }
 
@@ -53,18 +72,27 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.newsTitle.text = newsData[indexPath.row].title
         cell.newsSource.text = newsData[indexPath.row].source
-        cell.newsImage.sd_setImage(with: URL(string: newsData[indexPath.row].image!))
+        cell.newsImage.sd_setImage(with: URL(string: newsData[indexPath.row].image ?? "" ))
         cell.newsImage.layer.cornerRadius = 10
-        
+
         return cell
     }
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        UIApplication.shared.open(URL(string: newsData[indexPath.row].link!)!) { success in
+        UIApplication.shared.open(URL(string: newsData[indexPath.row].link ?? "")!) { success in
             if success {
                 print("link open favorites")
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .normal, title:  "Remove", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+             print("OK, marked as Removed")
+            self.delete(item: self.newsData[indexPath.row])
+         })
+         closeAction.backgroundColor = .red
+         return UISwipeActionsConfiguration(actions: [closeAction])
     }
 }
        

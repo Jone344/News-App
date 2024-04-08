@@ -57,6 +57,7 @@ class SharedVC: UIViewController {
         do {
             try context.save()
             print("successfully saved")
+            newsTableView.reloadData()
         } catch {
             print("Could not save")
         }
@@ -94,7 +95,15 @@ extension SharedVC: UITableViewDelegate, UITableViewDataSource {
                 print("open link")
             }
         }
-        self.save(link: urls, image: self.imageURLArray[indexPath.row], title: self.titleArray[indexPath.row], source: self.newsSourceArray[indexPath.row])
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let closeAction = UIContextualAction(style: .normal, title:  "Save", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+             print("OK, marked as Saved to CoreData")
+             self.save(link: self.newsStoryUrlArray[indexPath.row], image: self.imageURLArray[indexPath.row], title: self.titleArray[indexPath.row], source: self.newsSourceArray[indexPath.row])
+         })
+         closeAction.backgroundColor = .green
+         return UISwipeActionsConfiguration(actions: [closeAction])
     }
 }
 
