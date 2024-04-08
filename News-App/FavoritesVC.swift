@@ -19,19 +19,17 @@ class FavoritesVC: UIViewController {
         self.newsTableView.reloadData()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        newsData = fetch()
-//        newsTableView.reloadData()
-//    }
-//    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         newsData = fetch()
         newsTableView.reloadData()
     }
-
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        newsData = fetch()
+        newsTableView.reloadData()
+    }
     
     func fetch() -> [NewsData] {
         var newsData = [NewsData]()
