@@ -18,4 +18,5 @@ Supports saving favorites using Core Data.
 - SDWebImage
 
 ## Screenshots
-Add some screenshots or GIFs here.
+[Add some screenshots or GIFs here.
+](https://github.com/Jone344/News-App/blob/main/Screenshots/Simulator%20Screen%20Recording%20-%20iPhone%2016%20-%202025-09-10%20at%2005.09.06.mp4)
