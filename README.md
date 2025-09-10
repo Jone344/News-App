@@ -18,4 +18,4 @@ Supports saving favorites using Core Data.
 - SDWebImage
 
 ## Screenshots
-Simulator Screenshot - iPhone 16 - 2025-09-10 at 03.56.39.png
+![Скриншот](Simulator%20Screenshot%20-%20iPhone%2016%20-%202025-09-10%20at%2003.56.39.png)
